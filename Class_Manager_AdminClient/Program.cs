@@ -1,4 +1,4 @@
-using Class_Manager_AdminClient.Services;
+
 
 namespace Class_Manager_AdminClient
 {
@@ -10,7 +10,7 @@ namespace Class_Manager_AdminClient
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddSingleton<SignalRClientService>();
+           
 
 
             builder.Services.AddCors(options =>

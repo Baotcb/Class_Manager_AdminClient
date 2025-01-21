@@ -1,0 +1,43 @@
+﻿<div class="container mt-5">
+    <h1 class="mb-4">User List</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+            </tr>
+        </thead>
+        <tbody id="userTableBody">
+           
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Sample user data
+    const users = [
+        { UserId: 1, Name: "John Doe", Email: "john.doe@example.com", Role: 1 },
+        { UserId: 2, Name: "Jane Smith", Email: "jane.smith@example.com", Role: 2 },
+        { UserId: 3, Name: "Alice Johnson", Email: "alice.johnson@example.com", Role: 1 }
+    ];
+
+    // Function to populate the user table
+    function populateUserTable() {
+        const userTableBody = document.getElementById("userTableBody");
+        users.forEach(user => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${user.UserId}</td>
+                <td>${user.Name}</td>
+                <td>${user.Email}</td>
+                <td>${user.Role}</td>
+            `;
+            userTableBody.appendChild(row);
+        });
+    }
+
+    // Populate the table when the page loads
+    window.onload = populateUserTable;
+</script>

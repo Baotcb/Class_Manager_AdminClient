@@ -8,5 +8,11 @@ namespace Class_Manager_AdminClient.Controllers
         {
             return View();
         }
+        public IActionResult GetLink(int n)
+        {
+            if (n==0) return PartialView("Home");
+            if (n==1) return PartialView("Notification");
+            else return PartialView("ListUser");
+        }
     }
 }
