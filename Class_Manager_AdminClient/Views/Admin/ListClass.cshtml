@@ -1,6 +1,49 @@
 ﻿<div class="container mt-5" ng-app="app" ng-controller="Indexcontroller">
-    <h1 class="mb-4">Class List</h1>
-    <table class="table table-striped">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="mb-4">Class List</h1>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary float-right" ng-click="toggleFormClass()">Add Class</button>
+            </div>
+        </div>
+    </div>
+
+  
+    <div class="modal fade" id="classModal" aria-labelledby="classModalLabel" ng-show="showFormClass">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="classModalLabel">Add Class</h5>
+                    <button type="button" class="btn-close" aria-label="Close" ng-click="toggleFormClass()"></button>
+                </div>
+                <div class="modal-body">
+                    <form ng-submit="addClass()">
+                        <div class="mb-3">
+                            <label for="className" class="form-label">Class Name</label>
+                            <input type="text" class="form-control" id="className" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="endAt" class="form-label">End At</label>
+                            <input type="datetime-local" class="form-control" id="endAt" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="teacherId" class="form-label">Teacher ID</label>
+                            <input type="number" class="form-control" id="teacherId" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped mt-4">
         <thead>
             <tr>
                 <th scope="col">Class ID</th>
@@ -9,6 +52,7 @@
                 <th scope="col">End At</th>
                 <th scope="col">Password</th>
                 <th scope="col">Teacher ID</th>
+                <th scope="col"> Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +63,7 @@
                 <td>{{ class.endAt | date:'short' }}</td>
                 <td>{{ class.password }}</td>
                 <td>{{ class.teacherId }}</td>
+                <td><button class="btn btn-danger" ng-click="deleteClass(class.classId)">Delete</button></td>
             </tr>
         </tbody>
     </table>

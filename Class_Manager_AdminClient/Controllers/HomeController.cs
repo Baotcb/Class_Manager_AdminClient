@@ -16,20 +16,11 @@ namespace Class_Manager_AdminClient.Controllers
           
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-           
-           
             return View();
         }
 
-
-        [HttpPost]
-        public async Task<IActionResult> CheckLogin(string user, string password)
-        {
-         
-            return Ok();
-        }
 
         public IActionResult Privacy()
         {

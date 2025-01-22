@@ -44,14 +44,15 @@
                 <th scope="col">User ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
-                
+                <th scope="col"> Delete</th>
                 
             </tr>
         </thead>
         <tbody id="userTableBody" ng-repeat="user in teacher">
                 <td>{{ user.userId }}</td>
                 <td>{{ user.name }}</td>
-                <td>{{ user.email }}</td> 
+                <td>{{ user.email }}</td>
+            <td><button class="btn btn-danger" ng-click="deleteTeacher(user.userId)">Delete</button></td>
         </tbody>
     </table>
 

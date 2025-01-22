@@ -13,6 +13,7 @@
         $scope.notifications = [];
 
         $scope.showForm = false;
+        $scope.showFormClass = false;
 
         $scope.setId = function (id) {
             console.log("Setting ID to: " + id);
@@ -71,6 +72,15 @@
                 $('#teacherModal').modal('hide');
             }
         };
+        $scope.toggleFormClass = function () {
+            $scope.showFormClass = !$scope.showFormClass;
+            console.log("showForm:", $scope.showFormClass);
+            if ($scope.showFormClass) {
+                $('#classModal').modal('show');
+            } else {
+                $('#classModal').modal('hide');
+            }
+        };
 
         $scope.addTeacher = function () {
             var name = document.getElementById("Name").value;
@@ -85,7 +95,34 @@
             $('#teacherModal').modal('hide');
             connection.invoke("CreateTeacher",name,email,password).catch(err => console.error(err.toString()));
         };
-    }
+
+
+        $scope.addClass = function () {
+            var name = document.getElementById("className").value;
+            var endAt = document.getElementById("endAt").value;
+            var password = document.getElementById("password").value;
+            var teacherId = document.getElementById("teacherId").value;
+
+            console.log("Class Name:", name);
+
+            console.log("End At:", endAt);
+            console.log("Password:", password);
+            console.log("Teacher ID:", teacherId);
+
+            $scope.showForm = false;
+            $('#classModal').modal('hide');
+            connection.invoke("CreateClass", name, password, new Date(endAt), parseInt(teacherId)).catch(err => console.error(err.toString()));
+        };
+        $scope.deleteClass = function (id) {
+            console.log("Deleting class with id:", id);
+            connection.invoke("DeleteClass", id).catch(err => console.error(err.toString()));
+        };
+
+        $scope.deleteTeacher = function (id) {
+            console.log("Deleting teacher with id:", id);
+            connection.invoke("DeleteTeacher", id).catch(err => console.error(err.toString()));
+        };
+    };
 })();
 
 
