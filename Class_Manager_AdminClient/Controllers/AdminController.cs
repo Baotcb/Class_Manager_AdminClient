@@ -10,9 +10,15 @@ namespace Class_Manager_AdminClient.Controllers
         }
         public IActionResult GetLink(int n)
         {
-            if (n==0) return PartialView("Home");
-            if (n==1) return PartialView("Notification");
-            else return PartialView("ListUser");
+            switch (n)
+            {
+                case 0: return PartialView("Home");
+                case 1: return PartialView("Notification");
+                case 2: return PartialView("ListTeacher");
+                case 3: return PartialView("ListStudent");
+                case 4: return PartialView("ListClass");
+                default: return RedirectToAction("Error", "Home");
+            }
         }
     }
 }

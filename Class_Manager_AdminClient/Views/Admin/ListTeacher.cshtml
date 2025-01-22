@@ -1,0 +1,63 @@
+﻿<div class="container mt-5" ng-app="app" ng-controller="Indexcontroller">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="mb-4">Teacher List</h1>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary float-right" ng-click="toggleForm()">Add Teacher</button>
+            </div>
+        </div>
+
+    <div class="modal fade" id="teacherModal" aria-labelledby="teacherModalLabel" ng-show="showForm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="teacherModalLabel">Add Teacher</h5>
+                        <button type="button" class="btn-close" aria-label="Close" ng-click="toggleForm()"></button>
+                </div>
+                <div class="modal-body">
+                    <form ng-submit="addTeacher()">
+                        <div class="mb-3">
+                            <label for="userId" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="Email"  required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password"  required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody id="userTableBody" ng-repeat="user in teacher">
+                <td>{{ user.userId }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td> 
+        </tbody>
+    </table>
+
+
+    
+
+
+</div>
+

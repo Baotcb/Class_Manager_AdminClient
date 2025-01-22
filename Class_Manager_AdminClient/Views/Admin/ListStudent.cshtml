@@ -1,0 +1,22 @@
+﻿<div class="container mt-5" ng-app="app" ng-controller="Indexcontroller">
+    <h1 class="mb-4">User List</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                
+
+            </tr>
+        </thead>
+        <tbody id="userTableBody" ng-repeat="user in student">
+        <td>{{ user.userId }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+      
+
+
+        </tbody>
+    </table>
+</div>

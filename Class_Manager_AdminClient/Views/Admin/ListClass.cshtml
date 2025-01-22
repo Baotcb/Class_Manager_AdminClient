@@ -1,0 +1,25 @@
+﻿<div class="container mt-5" ng-app="app" ng-controller="Indexcontroller">
+    <h1 class="mb-4">Class List</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Class ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Created At</th>
+                <th scope="col">End At</th>
+                <th scope="col">Password</th>
+                <th scope="col">Teacher ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="class in classs">
+                <td>{{ class.classId }}</td>
+                <td>{{ class.name }}</td>
+                <td>{{ class.createdAt | date:'short' }}</td>
+                <td>{{ class.endAt | date:'short' }}</td>
+                <td>{{ class.password }}</td>
+                <td>{{ class.teacherId }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
