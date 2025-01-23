@@ -1,7 +1,7 @@
 ﻿<div class="container mt-5" ng-app="app" ng-controller="Indexcontroller">
     <h1 class="mb-4">Notifications</h1>
     <div class="list-group">
-        <div class="list-group-item list-group-item-action" ng-repeat="notification in notifications">
+        <div class="list-group-item list-group-item-action" ng-repeat="notification in notifications | orderBy:'$index':true">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">Notification</h5>
                 

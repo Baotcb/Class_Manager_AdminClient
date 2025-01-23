@@ -18,7 +18,7 @@ namespace Class_Manager_AdminClient
                 options.AddPolicy("AllowSpecificOrigin",
                     builder =>
                     {
-                        builder.WithOrigins("https://localhost:7042")
+                        builder.WithOrigins("https://localhost:7042", "https://localhost:7285")
                                .AllowAnyMethod()
                                .AllowAnyHeader()
                                .AllowCredentials();

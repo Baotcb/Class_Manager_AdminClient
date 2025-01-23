@@ -31,18 +31,30 @@
             .withUrl("https://localhost:7042/adminHub")
             .build();
 
+        const connection2 = new signalR.HubConnectionBuilder()
+            .withUrl("https://localhost:7236/adminHub2")
+            .build();
+
+        connection2.start().then(() => {
+            console.log("SignalR2 connected.");
+            connection2.invoke("GetNotification").catch(err => console.error(err.toString()));
+        }).catch(err => console.error(err.toString()));
+
+
         connection.start().then(() => {
             console.log("SignalR connected.");
-            connection.invoke("GetNotification").catch(err => console.error(err.toString()));
+            
             connection.invoke("GetTeacher").catch(err => console.error(err.toString()));
             connection.invoke("GetStudent").catch(err => console.error(err.toString()));
             connection.invoke("GetClass").catch(err => console.error(err.toString()));
         }).catch(err => console.error(err.toString()));
 
-        connection.on("GetNotification", (notifications) => {
+ 
+        connection2.on("GetNotification", (notifications) => {
             console.log(notifications);
+       
             $scope.notifications = notifications;
-            $scope.$apply(); 
+            $scope.$apply();
         });
 
         connection.on("GetTeacher", (teacher) => {
