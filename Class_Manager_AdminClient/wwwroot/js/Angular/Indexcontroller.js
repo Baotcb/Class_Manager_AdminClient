@@ -68,6 +68,17 @@
             $scope.student = student;
             $scope.$apply();
         });
+        connection2.on("GetTeacher", (teacher) => {
+            console.log(teacher);
+            $scope.teacher = teacher;
+            $scope.$apply();
+        });
+
+        connection2.on("GetStudent", (student) => {
+            console.log(student);
+            $scope.student = student;
+            $scope.$apply();
+        });
 
         connection.on("GetClass", (classs) => {
             console.log(classs);
@@ -97,34 +108,36 @@
         $scope.addTeacher = function () {
             var name = document.getElementById("Name").value;
             var email = document.getElementById("Email").value;
+            var phone = document.getElementById("phone").value;
             var password = document.getElementById("password").value;
 
             console.log("Name:", name);
             console.log("Email:", email);
+            console.log("Phone:", phone)
             console.log("Password:", password);
 
             $scope.showForm = false;
             $('#teacherModal').modal('hide');
-            connection.invoke("CreateTeacher",name,email,password).catch(err => console.error(err.toString()));
+            connection.invoke("CreateTeacher",name,email,phone,password).catch(err => console.error(err.toString()));
         };
 
 
         $scope.addClass = function () {
             var name = document.getElementById("className").value;
-            var endAt = document.getElementById("endAt").value;
-            var password = document.getElementById("password").value;
+            var Semester = document.getElementById("Semester").value;
+            var year = document.getElementById("year").value;
             var teacherId = document.getElementById("teacherId").value;
 
             console.log("Class Name:", name);
-
-            console.log("End At:", endAt);
-            console.log("Password:", password);
+            console.log("Semester:", Semester);
+            console.log("Year:", year);
             console.log("Teacher ID:", teacherId);
 
-            $scope.showForm = false;
+            $scope.showFormClass = false;
             $('#classModal').modal('hide');
-            connection.invoke("CreateClass", name, password, new Date(endAt), parseInt(teacherId)).catch(err => console.error(err.toString()));
+            connection.invoke("CreateClass", name, parseInt(Semester), parseInt(year), parseInt(teacherId)).catch(err => console.error(err.toString()));
         };
+
         $scope.deleteClass = function (id) {
             console.log("Deleting class with id:", id);
             connection.invoke("DeleteClass", id).catch(err => console.error(err.toString()));

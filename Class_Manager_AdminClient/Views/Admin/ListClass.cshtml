@@ -1,4 +1,4 @@
-﻿<div class="container mt-5" ng-app="app" ng-controller="Indexcontroller">
+﻿<div class="container mt-5" >
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -25,12 +25,16 @@
                             <input type="text" class="form-control" id="className" required>
                         </div>
                         <div class="mb-3">
-                            <label for="endAt" class="form-label">End At</label>
-                            <input type="datetime-local" class="form-control" id="endAt" required>
+                            <label for="Semester" class="form-label">Semester</label>
+                            <select class="form-control" id="Semester" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" required>
+                            <label for="year" class="form-label">Year</label>
+                            <input type="number" class="form-control" id="year" min="1900" max="2100" required>
                         </div>
                         <div class="mb-3">
                             <label for="teacherId" class="form-label">Teacher ID</label>
@@ -48,9 +52,8 @@
             <tr>
                 <th scope="col">Class ID</th>
                 <th scope="col">Name</th>
-                <th scope="col">Created At</th>
+                <th scope="col">Begin At</th>
                 <th scope="col">End At</th>
-                <th scope="col">Password</th>
                 <th scope="col">Teacher ID</th>
                 <th scope="col"> Delete</th>
             </tr>
@@ -59,12 +62,16 @@
             <tr ng-repeat="class in classs">
                 <td>{{ class.classId }}</td>
                 <td>{{ class.name }}</td>
-                <td>{{ class.createdAt | date:'short' }}</td>
+                <td>{{ class.beginAt | date:'short' }}</td>
                 <td>{{ class.endAt | date:'short' }}</td>
-                <td>{{ class.password }}</td>
                 <td>{{ class.teacherId }}</td>
                 <td><button class="btn btn-danger" ng-click="deleteClass(class.classId)">Delete</button></td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<script>
+
+</script>
+       

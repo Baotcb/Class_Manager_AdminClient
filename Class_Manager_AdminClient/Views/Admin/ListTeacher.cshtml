@@ -1,4 +1,4 @@
-﻿<div class="container mt-5" ng-app="app" ng-controller="Indexcontroller">
+﻿<div class="container mt-5" >
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -26,6 +26,10 @@
                             <label for="name" class="form-label">Email</label>
                             <input type="text" class="form-control" id="Email"  required>
                         </div>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" required>
+                            </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="password"  required>
@@ -44,15 +48,17 @@
                 <th scope="col">User ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
                 <th scope="col"> Delete</th>
                 
             </tr>
         </thead>
         <tbody id="userTableBody" ng-repeat="user in teacher">
                 <td>{{ user.userId }}</td>
-                <td>{{ user.name }}</td>
+                <td>{{ user.name }}</td>         
                 <td>{{ user.email }}</td>
-            <td><button class="btn btn-danger" ng-click="deleteTeacher(user.userId)">Delete</button></td>
+                <td>{{user.phoneNumber}}</td>
+                <td><button class="btn btn-danger" ng-click="deleteTeacher(user.userId)">Delete</button></td>
         </tbody>
     </table>
 
